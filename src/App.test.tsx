@@ -1,9 +1,18 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import App from './App';
+import { Provider } from 'react-redux';
+import { store } from './state';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+describe('App', () => {
+  test('renders without crashing', () => {
+    render(
+      <Provider store={store}>
+      <App />
+    </Provider>
+      );
+    const linkElement = screen.getByText(/0/i);
+    expect(linkElement).toBeInTheDocument();
+  });
+})
+
